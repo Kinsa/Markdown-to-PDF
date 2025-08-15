@@ -1,0 +1,18 @@
+# OS
+.DS_Store
+
+# IDE / Editor
+.idea/
+
+# Python bytecode / caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+*.pyd
+*.pyo
+
+# Virtual environments (virtualenv)
+.venv/
