@@ -1,0 +1,99 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project Overview
+
+This is a simple Python project that converts Markdown files to PDF using the fpdf2 and mistletoe libraries. The main functionality is contained in a single file (`main.py`) that reads a Markdown file, converts it to HTML using mistletoe, and then generates a PDF using fpdf2.
+
+## Development Environment Setup
+
+The project uses UV for Python package management and virtual environment handling:
+
+```sh
+# Install UV (first time only)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+source ~/.zshrc
+
+# Install Python via UV
+uv python install
+
+# Create and activate virtual environment
+uv venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+
+# Install dependencies
+uv add fpdf2 mistletoe
+uv add --dev pytest ruff black
+uv sync
+```
+
+## Core Dependencies
+
+- **fpdf2**: PDF generation library
+- **mistletoe**: Markdown to HTML converter
+- **black**: Code formatter
+- **ruff**: Fast Python linter
+- **pytest**: Testing framework
+
+## Project Structure
+
+- `main.py`: Main conversion script that accepts a markdown file argument and outputs PDF
+- `test_main.py`: Test file for the conversion script
+- `readme.md`: Project documentation and setup instructions
+- `.venv/`: Virtual environment directory (managed by UV)
+
+## Running the Application
+
+You can run the application either by activating the virtual environment or using `uv run`:
+
+```sh
+# Option 1: Activate virtual environment first
+source .venv/bin/activate
+python main.py <input_file.md>
+
+# Option 2: Use uv run (no activation needed)
+uv run python main.py <input_file.md>
+```
+
+The script accepts a markdown file as a command-line argument and outputs a PDF with the same base name.
+
+## Code Quality Tools
+
+Always run formatting and linting after making edits. You can either activate the virtual environment or use `uv run`:
+
+```sh
+# Option 1: With activated virtual environment
+source .venv/bin/activate
+black main.py
+ruff check --fix main.py
+ruff check main.py
+
+# Option 2: Using uv run (no activation needed)
+uv run black main.py
+uv run ruff check --fix main.py
+uv run ruff check main.py
+```
+
+## Testing
+
+Always run tests after making changes. Tests help ensure code quality and catch regressions. You can either activate the virtual environment or use `uv run`:
+
+```sh
+# Option 1: With activated virtual environment
+source .venv/bin/activate
+pytest
+pytest -v
+pytest test_main.py
+
+# Option 2: Using uv run (no activation needed)
+uv run pytest
+uv run pytest -v
+uv run pytest test_main.py
+```
+
+When adding new functionality, either specify what tests to write or ask for test suggestions to ensure proper coverage.
+
+## IDE Configuration
+
+The project is configured for PyCharm with UV integration. See the [PyCharm UV documentation](https://www.jetbrains.com/help/pycharm/uv.html) for setup details.
