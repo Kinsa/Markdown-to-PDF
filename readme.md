@@ -1,5 +1,7 @@
 # Markdown To PDF
 
+A Python script to be run from the command line to convert a Markdown document to PDF using fpdf2 and Mistletoe.
+
 ## First Time Getting Set Up
 
 [Install UV](https://docs.astral.sh/uv/getting-started/installation/):
