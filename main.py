@@ -2,8 +2,8 @@ import sys
 import os
 import tempfile
 from pathlib import Path
-from fpdf import FPDF
-from mistletoe import markdown
+from xhtml2pdf import pisa
+from markdown import markdownFromFile
 
 
 def convert_markdown_to_pdf(markdown_file_path):
@@ -18,36 +18,34 @@ def convert_markdown_to_pdf(markdown_file_path):
             f"File must have .md or .markdown extension: {markdown_file_path}"
         )
 
-    # Read markdown content
-    with open(markdown_path, "r", encoding="utf-8") as f:
-        markdown_content = f.read()
-
-    # Convert markdown to HTML
-    html_content = markdown(markdown_content)
-
     # Create temporary HTML file for processing
     with tempfile.NamedTemporaryFile(
-        mode="w", suffix=".html", delete=False, encoding="utf-8"
-    ) as temp_html:
-        temp_html.write(html_content)
-        temp_html_path = temp_html.name
+        mode="w", suffix=".html", delete=False
+    ) as temp_file:
+        temp_html_path = temp_file.name  # Get the path immediately
 
+    # Convert markdown to HTML
+    markdownFromFile(input=str(markdown_path), output=temp_html_path)
+
+    # Read HTML content
+    with open(temp_html_path, "r", encoding="utf-8") as f:
+        html_content = f.read()
+
+    # Generate PDF
     try:
-        # Generate PDF with Unicode support
-        pdf = FPDF(format="A4", unit="mm")
-        pdf.add_page()
-        pdf.add_font("Montserrat", fname="fonts/Montserrat-Regular.ttf")
-        pdf.add_font("Montserrat", style="I", fname="fonts/Montserrat-Italic.ttf")
-        pdf.set_font("Montserrat", size=12)
-        pdf.write_html(html_content)
-
-        # Create output PDF path with same base name
         pdf_path = markdown_path.with_suffix(".pdf")
-        pdf.output(str(pdf_path))
+        with open(pdf_path, "wb") as result_file:
+            pisa_status = pisa.CreatePDF(
+                html_content, dest=result_file, encoding="UTF-8"
+            )
 
-        print(f"Successfully converted {markdown_path} to {pdf_path}")
+        # Check for errors
+        if pisa_status.err:
+            print("An error occurred!")
+        else:
+            print(f"Successfully converted {markdown_path} to {pdf_path}")
+
         return str(pdf_path)
-
     finally:
         # Clean up temporary HTML file
         if os.path.exists(temp_html_path):

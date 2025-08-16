@@ -1,6 +1,6 @@
 # Markdown To PDF
 
-A Python script to be run from the command line to convert a Markdown document to PDF using fpdf2 and Mistletoe.
+A Python script to be run from the command line to convert a Markdown document to PDF using xhtml2pdf and readme.
 
 # Development
 
@@ -32,14 +32,14 @@ $ uv init .
 
 ### Install packages manually the first time
 
-- [fpdf2 Installation Docs](https://py-pdf.github.io/fpdf2/index.html#installation)
-- [Installing and using Mistletoe to convert Markdown files to PDF](https://py-pdf.github.io/fpdf2/CombineWithMarkdown.html)
+- [xhtml2pdf Docs](https://xhtml2pdf.readthedocs.io/en/latest/quickstart.html)
+- [markdown documentation](https://python-markdown.github.io/reference/)
 - [Pytest how-to guides](https://docs.pytest.org/en/stable/how-to/index.html)
 - [Getting started with Ruff](https://docs.astral.sh/ruff/tutorial/#getting-started)
 - [The Black code style](https://black.readthedocs.io/en/stable/the_black_code_style/index.html)
 
 ```sh
-$ uv add fpdf2 mistletoe 
+$ uv add xhtml2pdf markdown 
 $ uv add --dev pytest ruff black
 $ uv sync
 ```
@@ -120,7 +120,8 @@ ruff check main.py
 
 ## Configure PyCharm 
 
-[Configure PyCharm to use the uv environment](https://www.jetbrains.com/help/pycharm/uv.html)
+- [Configure PyCharm to use the uv environment](https://www.jetbrains.com/help/pycharm/uv.html)
+- [Configure PyCharm to Format Code with Black when running the format code command and/or on save](https://www.jetbrains.com/help/pycharm/reformat-and-rearrange-code.html#configure-black)
 
 ### Running Tests in PyCharm
 

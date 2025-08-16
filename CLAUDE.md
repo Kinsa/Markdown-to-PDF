@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a simple Python project that converts Markdown files to PDF using the fpdf2 and mistletoe libraries. The main functionality is contained in a single file (`main.py`) that reads a Markdown file, converts it to HTML using mistletoe, and then generates a PDF using fpdf2.
+This is a simple Python project that converts Markdown files to PDF using the xhtml2pdf and markdown libraries. The main functionality is contained in a single file (`main.py`) that reads a Markdown file, converts it to HTML using markdown, and then generates a PDF using xhtml2pdf.
 
 ## Development Environment Setup
 
@@ -23,15 +23,15 @@ uv venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
 # Install dependencies
-uv add fpdf2 mistletoe
+uv add xhtml2pdf markdown
 uv add --dev pytest ruff black
 uv sync
 ```
 
 ## Core Dependencies
 
-- **fpdf2**: PDF generation library
-- **mistletoe**: Markdown to HTML converter
+- **xhtml2pdf**: PDF generation library
+- **markdown**: Markdown to HTML converter
 - **black**: Code formatter
 - **ruff**: Fast Python linter
 - **pytest**: Testing framework
