@@ -28,13 +28,6 @@ $ uv python install
 $ uv init .
 ```
 
-### Create and activate a virtual environment
-
-```sh
-$ uv venv .venv
-$ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-```
-
 ### Install packages manually the first time
 
 - [fpdf2 Installation Docs](https://py-pdf.github.io/fpdf2/index.html#installation)
@@ -59,13 +52,13 @@ Install a suitable Python (pick one that satisfies requires-python in the `pypro
 $ uv python install 3.13
 ```
 
-Create a virtual environment (optional; uv sync will create one if missing):
+Create a virtual environment (optional; `uv sync` will create one if missing):
 
 ```sh
 $ uv venv .venv
 ```
 
-Install exactly what’s in uv.lock including the dev tools group
+Install exactly what’s in `uv.lock` including the dev tools group
 
 ```sh
 $ uv sync --frozen --all-groups
@@ -78,7 +71,7 @@ $ uv sync --frozen --all-groups
 Activate the virtual environment to run pytest, black, or ruff directly
 
 ```sh
-$ source .venv/bin/activate
+$ source .venv/bin/activate # On Windows: .venv\Scripts\activate
 ```
 
 Deactivate the virtual environment
