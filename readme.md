@@ -16,7 +16,7 @@ Source the `~/.zshrc` file for changes to take effect:
 $ source ~/.zshrc
 ```
 
-[Use UV to install the latest Python just for it's use](https://docs.astral.sh/uv/guides/install-python/). Use the latest LTS release.
+[Use UV to install the latest Python just for it's use](https://docs.astral.sh/uv/guides/install-python/).
 
 ```sh
 $ uv python install
