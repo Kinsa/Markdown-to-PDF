@@ -33,9 +33,12 @@ def convert_markdown_to_pdf(markdown_file_path):
         temp_html_path = temp_html.name
 
     try:
-        # Generate PDF
-        pdf = FPDF()
+        # Generate PDF with Unicode support
+        pdf = FPDF(format="A4", unit="mm")
         pdf.add_page()
+        pdf.add_font("Montserrat", fname="fonts/Montserrat-Regular.ttf")
+        pdf.add_font("Montserrat", style="I", fname="fonts/Montserrat-Italic.ttf")
+        pdf.set_font("Montserrat", size=12)
         pdf.write_html(html_content)
 
         # Create output PDF path with same base name
