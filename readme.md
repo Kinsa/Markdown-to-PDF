@@ -51,7 +51,7 @@ $ uv sync
 
 ## Subsequent Setup
 
-Install UV from the steps in the First Time Getting Set Up section if uv is not installed
+Install uv from the steps in the *First Time Getting Set Up* section if uv is not installed
 
 Install a suitable Python (pick one that satisfies requires-python in the `pyproject.toml` file)
 
