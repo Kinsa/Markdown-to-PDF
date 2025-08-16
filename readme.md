@@ -2,6 +2,8 @@
 
 A Python script to be run from the command line to convert a Markdown document to PDF using fpdf2 and Mistletoe.
 
+# Development
+
 ## First Time Getting Set Up
 
 [Install UV](https://docs.astral.sh/uv/getting-started/installation/):
@@ -130,3 +132,9 @@ Create a Run/Debug configuration using pytest:
 
 - Create a new configuration of type “Python tests” > “pytest”.
 - Ensure the Working directory is your project root and the Interpreter is your project’s .venv Python.
+
+## Running the Script
+
+```sh
+uv run main.py spam.md
+```

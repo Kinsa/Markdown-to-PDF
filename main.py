@@ -54,7 +54,7 @@ def convert_markdown_to_pdf(markdown_file_path):
 def main():
     """Main entry point for the script."""
     if len(sys.argv) != 2:
-        print("Usage: python md2pdf.py <markdown_file>")
+        print("Usage: python main.py <markdown_file>")
         sys.exit(1)
 
     markdown_file = sys.argv[1]

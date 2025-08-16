@@ -31,7 +31,7 @@ def test_value_error():
 
 def test_main_entry_point():
     """Test that main function prints usage instructions when called without arguments."""
-    from md2pdf import main
+    from main import main
 
     with pytest.raises(SystemExit) as exc_info:
         main()
@@ -42,10 +42,10 @@ def test_main_entry_point():
 
 def test_main_file_not_found_error():
     """Test that main function handles FileNotFoundError and exits with code 1."""
-    from md2pdf import main
+    from main import main
     
     # Mock sys.argv to simulate command line argument
-    with patch.object(sys, "argv", ["md2pdf.py", "non_existent_file.md"]):
+    with patch.object(sys, "argv", ["main.py", "non_existent_file.md"]):
         with pytest.raises(SystemExit) as exc_info:
             main()
         
@@ -55,7 +55,7 @@ def test_main_file_not_found_error():
 
 def test_main_value_error():
     """Test that main function handles ValueError and exits with code 1."""
-    from md2pdf import main
+    from main import main
     
     # Create a temporary file with wrong extension
     with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False) as temp_file:
@@ -64,7 +64,7 @@ def test_main_value_error():
     
     try:
         # Mock sys.argv to simulate command line argument with wrong file extension
-        with patch.object(sys, "argv", ["md2pdf.py", temp_file_path]):
+        with patch.object(sys, "argv", ["main.py", temp_file_path]):
             with pytest.raises(SystemExit) as exc_info:
                 main()
             
