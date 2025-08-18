@@ -14,15 +14,24 @@ A Python script to be run from the command line to convert a Markdown document t
 
 Once the prerequisites are installed, run the `main.py` script passing the path to the markdown file as an argument:
 
-```sh
+```shell
 # sh
 uv run main.py spam.md
 ```
 
+Optionally, specify a CSS file with the `--css` flag:
+
+```shell
+# sh
+uv run main.py spam.md --css=eggs.css
+```
+
+For more information on defining things such as page size and margins, see the [xhtml2pdf documentation on Defining Page Layouts](https://xhtml2pdf.readthedocs.io/en/latest/format_html.html#pages).
+
 ## Release Outline
 
 1. [x] Prototype in Code: Python script which takes a markdown file as an argument and returns a formatted PDF
-2. [ ] Styling with CSS: Modify the stying of the output. Building towards having a default stylesheet, the ability to specify a separate stylesheet as a script argument, and documentation for creating additional stylesheets.
+2. [x] Styling with CSS: Modify the stying of the output. Building towards having a default stylesheet, the ability to specify a separate stylesheet as a script argument, and documentation for creating additional stylesheets.
 3. [ ] Backend Service with REST API: Abstract the functional prototype from the command line interface, adding a web server and REST API to allow posting a markdown file and optionally a stylesheet
 4. [ ] Frontend Interface: Design an interface for drag-and-drop/file browser choice of the files
 5. [ ] Stylesheet Saving: Allow the saving and basic management (renaming, removal) of stylesheets for future use
@@ -34,28 +43,28 @@ uv run main.py spam.md
 
 [Install UV](https://docs.astral.sh/uv/getting-started/installation/):
 
-```sh
+```shell
 # sh
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
 Source the `~/.zshrc` file for changes to take effect:
 
-```sh
+```shell
 # sh
 source ~/.zshrc
 ```
 
 [Use UV to install the latest Python just for it's use](https://docs.astral.sh/uv/guides/install-python/).
 
-```sh
+```shell
 # sh
 uv python install
 ```
 
 ### Create a new uv project
 
-```sh
+```shell
 # sh
 uv init .
 ```
@@ -68,7 +77,7 @@ uv init .
 - [Getting started with Ruff](https://docs.astral.sh/ruff/tutorial/#getting-started)
 - [The Black code style](https://black.readthedocs.io/en/stable/the_black_code_style/index.html)
 
-```sh
+```shell
 # sh
 uv add xhtml2pdf markdown 
 uv add --dev pytest ruff black
@@ -81,21 +90,21 @@ Install uv from the steps in the *First Time Getting Set Up* section if uv is no
 
 Install a suitable Python (pick one that satisfies requires-python in the `pyproject.toml` file)
 
-```sh
+```shell
 # sh
 uv python install 3.13
 ```
 
 Create a virtual environment (optional; `uv sync` will create one if missing):
 
-```sh
+```shell
 # sh
 uv venv .venv
 ```
 
 Install exactly what’s in `uv.lock` including the dev tools group
 
-```sh
+```shell
 # sh
 uv sync --frozen --all-groups
 ```
@@ -106,14 +115,14 @@ uv sync --frozen --all-groups
 
 Activate the virtual environment to run pytest, black, or ruff directly
 
-```sh
+```shell
 # sh
 source .venv/bin/activate # On Windows: .venv\Scripts\activate
 ```
 
 Deactivate the virtual environment
 
-```sh
+```shell
 # sh
 deactivate
 ```
@@ -122,14 +131,14 @@ deactivate
 
 Use `uv run` to run tools without activating the virtual environment, for example:
 
-```sh
+```shell
 # sh
 uv run pytest
 ```
 
 ### Running Tests
 
-```sh
+```shell
 # sh
 pytest test_main.py -v
 ```
@@ -140,21 +149,21 @@ Always run formatting and linting after making edits:
 
 #### Format code with black
 
-```sh
+```shell
 # sh
 black main.py
 ```
 
 #### Check and fix linting issues with ruff
 
-```sh
+```shell
 # sh
 ruff check --fix main.py
 ```
 
 #### Verify all checks pass
 
-```sh
+```shell
 # sh
 ruff check main.py
 ```
