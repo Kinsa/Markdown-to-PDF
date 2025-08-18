@@ -23,13 +23,75 @@ def convert_markdown_to_pdf(markdown_file_path):
         mode="w", suffix=".html", delete=False
     ) as temp_file:
         temp_html_path = temp_file.name  # Get the path immediately
+        print("Created temporary HTML file:", temp_html_path)
 
     # Convert markdown to HTML
     markdownFromFile(input=str(markdown_path), output=temp_html_path)
 
     # Read HTML content
     with open(temp_html_path, "r", encoding="utf-8") as f:
-        html_content = f.read()
+        html_body_content = f.read()
+
+    html_top_content = """
+    <html>
+        <head>
+            <style>
+                @page {
+                    size: A4 portrait;
+                    margin: 1.6cm 1.2cm 1.2cm;
+                }
+                
+                body {
+                    font-size: 13pt;
+                    line-height: 1.4;
+                }
+                
+                h1 {
+                    font-size: 21pt;
+                }
+                
+                h1, h2, h3, li {
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+                }
+                
+                h1 + p,
+                h2 + h3 {
+                    margin-top: 0;
+                }
+                
+                h3 + p {
+                    margin-bottom: 0;
+                }
+
+                p + p {
+                    margin-top: 13pt;
+                }
+
+                ul + p {
+                    margin-bottom: 0;
+                }
+                
+                ul {
+                    margin-bottom: 13pt;
+                }
+            </style>
+        </head>
+        <body>
+    """
+
+    html_bottom_content = """
+        </body>
+    </html>
+    """
+
+    html_content = "".join(
+        [
+            html_top_content,
+            html_body_content,
+            html_bottom_content,
+        ]
+    )
 
     # Generate PDF
     try:
@@ -48,8 +110,9 @@ def convert_markdown_to_pdf(markdown_file_path):
         return str(pdf_path)
     finally:
         # Clean up temporary HTML file
-        if os.path.exists(temp_html_path):
-            os.unlink(temp_html_path)
+        # if os.path.exists(temp_html_path):
+        #     os.unlink(temp_html_path)
+        pass
 
 
 def main():
