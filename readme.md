@@ -39,6 +39,10 @@ For more information on defining things such as page size and margins, see the [
 
 ## Development
 
+### Contributing
+
+By submitting a pull request, you agree that your contributions will be licensed under the same license as this project (MIT), and you grant the project owner (you) perpetual rights to use your contribution in the commercial app.
+
 ### First Time Getting Set Up
 
 [Install UV](https://docs.astral.sh/uv/getting-started/installation/):
