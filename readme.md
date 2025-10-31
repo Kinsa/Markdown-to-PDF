@@ -151,11 +151,11 @@ pytest test_main.py -v
 
 Always run formatting and linting after making edits:
 
-#### Format code with black
+#### Format code with ruff
 
 ```shell
 # sh
-black main.py
+ruff format main.py
 ```
 
 #### Check and fix linting issues with ruff

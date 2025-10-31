@@ -24,7 +24,7 @@ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
 # Install dependencies
 uv add xhtml2pdf markdown
-uv add --dev pytest ruff black
+uv add --dev pytest ruff
 uv sync
 ```
 
@@ -32,8 +32,7 @@ uv sync
 
 - **xhtml2pdf**: PDF generation library
 - **markdown**: Markdown to HTML converter
-- **black**: Code formatter
-- **ruff**: Fast Python linter
+- **ruff**: Fast Python linter and code formatter
 - **pytest**: Testing framework
 
 ## Project Structure
@@ -65,12 +64,12 @@ Always run formatting and linting after making edits. You can either activate th
 ```sh
 # Option 1: With activated virtual environment
 source .venv/bin/activate
-black main.py
+ruff format main.py
 ruff check --fix main.py
 ruff check main.py
 
 # Option 2: Using uv run (no activation needed)
-uv run black main.py
+uv run ruff format main.py
 uv run ruff check --fix main.py
 uv run ruff check main.py
 ```
