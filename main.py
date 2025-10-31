@@ -71,25 +71,17 @@ def convert_markdown_to_pdf(markdown_file_path, css_file_path):
     )
 
     # Generate PDF
-    try:
-        pdf_path = markdown_path.with_suffix(".pdf")
-        with open(pdf_path, "wb") as result_file:
-            pisa_status = pisa.CreatePDF(
-                html_content, dest=result_file, encoding="UTF-8"
-            )
+    pdf_path = markdown_path.with_suffix(".pdf")
+    with open(pdf_path, "wb") as result_file:
+        pisa_status = pisa.CreatePDF(html_content, dest=result_file, encoding="UTF-8")
 
-        # Check for errors
-        if pisa_status.err:
-            print("An error occurred!")
-        else:
-            print(f"Successfully converted {markdown_path} to {pdf_path}")
+    # Check for errors
+    if pisa_status.err:
+        print("An error occurred!")
+    else:
+        print(f"Successfully converted {markdown_path} to {pdf_path}")
 
-        return str(pdf_path)
-    finally:
-        # Clean up temporary HTML file
-        # if os.path.exists(temp_html_path):
-        #     os.unlink(temp_html_path)
-        pass
+    return str(pdf_path)
 
 
 def main():
