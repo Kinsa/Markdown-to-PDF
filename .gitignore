@@ -10,6 +10,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Test coverage
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+
 # C extensions
 *.so
 *.pyd

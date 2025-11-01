@@ -2,7 +2,12 @@ import pytest
 import sys
 import tempfile
 import os
+
 from unittest.mock import patch
+
+# Ensure project root (one level up from tests/) is on sys.path so main.py can be imported
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 from main import convert_markdown_to_pdf
 
 
@@ -91,21 +96,21 @@ def test_css_file_is_used():
         with patch("main.pisa.CreatePDF") as mock_create_pdf:
             # Configure the mock to return a successful status
             mock_create_pdf.return_value.err = False
-            
+
             convert_markdown_to_pdf(temp_md_file_path, temp_css_file_path)
-            
+
             # Assert that CreatePDF was called
             mock_create_pdf.assert_called_once()
-            
+
             # Get the HTML content that was passed to CreatePDF
             call_args = mock_create_pdf.call_args
             html_content = call_args[0][0]  # First positional argument
-            
+
             # Assert that the custom CSS is included in the HTML
             assert "h1 { color: red; }" in html_content
             assert "<style>" in html_content
             assert "</style>" in html_content
-            
+
     finally:
         # Clean up temporary files
         os.unlink(temp_md_file_path)

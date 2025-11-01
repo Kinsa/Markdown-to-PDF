@@ -34,6 +34,7 @@ uv sync
 - **markdown**: Markdown to HTML converter
 - **ruff**: Fast Python linter and code formatter
 - **pytest**: Testing framework
+- **Flask**: Web application framework
 
 ## Project Structure
 
@@ -41,10 +42,11 @@ uv sync
 - `test_main.py`: Test file for the conversion script
 - `readme.md`: Project documentation and setup instructions
 - `.venv/`: Virtual environment directory (managed by UV)
+- `service.py`: Flask microservice file
 
 ## Running the Application
 
-You can run the application either by activating the virtual environment or using `uv run`:
+You can run the application from the command line either by activating the virtual environment or using `uv run`:
 
 ```sh
 # Option 1: Activate virtual environment first
@@ -55,7 +57,22 @@ python main.py <input_file.md>
 uv run python main.py <input_file.md>
 ```
 
-The script accepts a markdown file as a command-line argument and outputs a PDF with the same base name.
+The command line script (`main.py`) accepts a markdown file as a command-line argument and outputs a PDF with the same base name.
+
+## Running the Web Service
+
+You can run the Flask web service from the command line either by activating the virtual environment or using `uv run`:
+
+```sh
+# Option 1: Activate virtual environment first
+source .venv/bin/activate
+python service.py
+
+# Option 2: Use uv run (no activation needed)
+uv run python service.py
+```
+
+The service script (`service.py`) starts a web server at http://127.0.0.1:5000 in debug mode by default, which means it will automatically reload when you make code changes.
 
 ## Code Quality Tools
 

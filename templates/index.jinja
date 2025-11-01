@@ -1,0 +1,55 @@
+{% with success_messages = get_flashed_messages(category_filter=['success']),
+error_messages = get_flashed_messages(category_filter=['error']) %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% if success_messages %}Success |{% endif %}{% if error_messages %}Error | {% endif %}{{ title }}</title>
+</head>
+
+<body>
+    <h1>{{ title }}</h1>
+
+    {% if success_messages %}
+    <div role="status" aria-live="polite" class="flash-messages flash-success">
+        <h2>Success:</h2>
+        <ul class="flash-messages flash-success">
+            {% for message in success_messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if error_messages %}
+    <div role="alert" aria-live="assertive" class="flash-messages flash-error"></div>
+    <h2>Error:</h2>
+    <ul class="flash-messages flash-error">
+        {% for message in error_messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    </div>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+        <div>
+            <label for="file">Upload Markdown File:</label>
+            <input type="file" name="file" id="file" accept=".md,.markdown" required>
+        </div>
+        <div>
+            <input type="submit" value="Upload">
+        </div>
+    </form>
+
+    {% if download_url %}
+    <script>
+        // Trigger automatic download
+        window.location.href = "{{ download_url }}";
+    </script>
+    {% endif %}
+</body>
+
+</html>
+{% endwith %}
