@@ -20,14 +20,14 @@ Once the prerequisites are installed, run the `main.py` script passing the path 
 
 ```shell
 # sh
-uv run main.py spam.md
+uv run python main.py spam.md
 ```
 
 Optionally, specify a CSS file with the `--css` flag:
 
 ```shell
 # sh
-uv run main.py spam.md --css=eggs.css
+uv run python main.py spam.md --css=eggs.css
 ```
 
 For more information on defining things such as page size and margins, see the [xhtml2pdf documentation on Defining Page Layouts](https://xhtml2pdf.readthedocs.io/en/latest/format_html.html#pages).
@@ -36,7 +36,7 @@ For more information on defining things such as page size and margins, see the [
 
 ```shell
 # sh
-uv run python service.py
+uv run python fservice.py
 ```
 
 The service runs in debug mode by default and will be available at http://127.0.0.1:5000
