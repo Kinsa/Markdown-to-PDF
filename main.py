@@ -93,7 +93,7 @@ def main():
     args = parser.parse_args()
 
     markdown_file = args.markdown_file
-    css_file = args.css or "main.css"  # Use default if not provided
+    css_file = args.css or "stylesheets/default.css"  # Use default if not provided
 
     try:
         convert_markdown_to_pdf(markdown_file, css_file)

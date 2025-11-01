@@ -1,0 +1,83 @@
+@page {
+    size: A4 portrait;
+    margin: 1.6cm 1.2cm 1.2cm;
+}
+
+body {
+    font-size: 10pt;
+    line-height: 1.4;
+}
+
+h1 {
+    font-size: 24pt;
+    margin-bottom: 18pt;
+}
+
+h1 em {
+    font-style: normal;
+    font-weight: 400;
+}
+
+h1, h2, h3, h4, li {
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+}
+
+h4 {
+    font-weight: normal;
+}
+
+p:first-of-type {
+    margin-bottom: 0;
+}
+
+h2 {
+    font-size: 16pt;
+    margin-top: 18pt;
+    margin-bottom: 6pt;
+}
+
+h3 {
+    font-size: 13pt;
+    font-weight: normal;
+}
+
+h4 {
+    font-size: 11pt;
+}
+
+h5 {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+h1 + h2 {
+    margin-top: 0;
+}
+
+hr {
+    margin-bottom: 18pt;
+}
+
+h2 + h3,
+h3 + h4 {
+    margin-top: 12pt;
+}
+
+p,
+ul {
+    margin-bottom: 6pt;
+}
+
+ul {
+    margin-top: 0;
+}
+
+h2 + p {
+    margin-top: 6pt;
+}
+
+li:last-of-type {
+    margin-bottom: 0;
+}

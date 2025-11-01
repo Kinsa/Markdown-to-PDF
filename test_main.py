@@ -11,7 +11,7 @@ def test_markdown_file_not_found_error():
     non_existent_file = "this_file_does_not_exist.md"
 
     with pytest.raises(FileNotFoundError, match="Markdown file not found"):
-        convert_markdown_to_pdf(non_existent_file, "main.css")
+        convert_markdown_to_pdf(non_existent_file, "stylesheets/default.css")
 
 
 def test_css_file_not_found_error():
@@ -43,7 +43,7 @@ def test_markdown_file_extension_value_error():
         with pytest.raises(
             ValueError, match="File must have .md or .markdown extension"
         ):
-            convert_markdown_to_pdf(temp_file_path, "main.css")
+            convert_markdown_to_pdf(temp_file_path, "stylesheets/default.css")
     finally:
         # Clean up the temporary file
         os.unlink(temp_file_path)

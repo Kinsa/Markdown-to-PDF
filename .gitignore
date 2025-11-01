@@ -17,3 +17,6 @@ __pycache__/
 
 # Virtual environments (virtualenv)
 .venv/
+
+# Uploads directory (service.py)
+uploads/
