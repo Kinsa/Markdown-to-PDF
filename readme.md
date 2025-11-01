@@ -46,11 +46,11 @@ The service runs in debug mode by default and will be available at http://127.0.
 1. [x] Prototype in Code: Python script which takes a markdown file as an argument and returns a formatted PDF
 2. [x] Styling with CSS: Modify the stying of the output. Building towards having a default stylesheet, the ability to specify a separate stylesheet as a script argument, and documentation for creating additional stylesheets.
 3. [-] Backend Service: Abstract the functional prototype from the command line interface, adding a web server to allow posting a markdown file and optionally a stylesheet (ref. https://flask.palletsprojects.com/en/stable/patterns/fileuploads/)
-    a. [-] Test services.py (ref. https://testdriven.io/blog/flask-pytest/)
-    b. [ ] Delete uploads after processing
-    c. [ ] Style the tempalate
-    d. [ ] Allow drag-and-drop uploading (ref. https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/File_drag_and_drop)
-    d. [ ] Allow for choosing between stylesheets (currently `default.css` which is a sans-serif typeface and `minimal.css` which just sets up an A4 page size)
+    - [-] Test services.py (ref. https://testdriven.io/blog/flask-pytest/)
+    - [ ] Delete uploads after processing
+    - [ ] Style the tempalate
+    - [ ] Allow drag-and-drop uploading (ref. https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/File_drag_and_drop)
+    - [ ] Allow for choosing between stylesheets (currently `default.css` which is a sans-serif typeface and `minimal.css` which just sets up an A4 page size)
 4. [ ] Mac OS / iOS app: Abstract backend service to use pywebview (JavaScript calls Python directly without web server) / evaluate Tauri (continue to use web server), package into a windowed .app including the frontend build as app data 
 5. [ ] Allow greater control over styling - one idea would be to choose options e.g. "A4" or "Letter" and "Landscape" or "Portrait" and maybe font, base font size, etc. and have the option to remember that for next time
 
