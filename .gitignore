@@ -10,6 +10,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Distribution / packaging
+*.egg-info/
+dist/
+build/
+*.egg
+
 # Test coverage
 .coverage
 .coverage.*

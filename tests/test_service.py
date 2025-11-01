@@ -1,9 +1,3 @@
-import os
-import sys
-
-# Ensure project root (one level up from tests/) is on sys.path so service.py can be imported
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
 from service import allowed_file
 
 

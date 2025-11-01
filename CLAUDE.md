@@ -23,10 +23,13 @@ uv venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
 # Install dependencies
-uv add xhtml2pdf markdown
-uv add --dev pytest ruff
-uv sync
+uv sync --frozen --all-groups
+
+# Install project in editable mode (required for tests to import modules)
+uv pip install -e .
 ```
+
+**Important**: The `uv pip install -e .` step installs the project in editable mode, which allows tests to import `main` and `service` modules without sys.path manipulation. This is required for the test suite to work properly.
 
 ## Core Dependencies
 

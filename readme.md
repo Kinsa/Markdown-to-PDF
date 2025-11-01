@@ -7,7 +7,12 @@ Convert a Markdown document to PDF in Python using xhtml2pdf and readme.
 ### Prerequisite Installation
 
 1. Install uv [following the directions](https://docs.astral.sh/uv/getting-started/installation/) if necessary.
-2. Install the package by running the command: `uv sync --frozen --all-groups`
+2. Install Python (if not already available): `uv python install`
+   - This ensures a compatible Python version (>=3.13) is available
+3. Sync dependencies: `uv sync --frozen --all-groups`
+4. Install the project in editable mode: `uv pip install -e .`
+   - This allows tests to import `main` and `service` modules without path manipulation
+   - Changes to code are immediately reflected without reinstallation
 
 ### Running the Script from the Command Line
 

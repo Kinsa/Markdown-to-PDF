@@ -4,10 +4,6 @@ import tempfile
 import os
 
 from unittest.mock import patch
-
-# Ensure project root (one level up from tests/) is on sys.path so main.py can be imported
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
 from main import convert_markdown_to_pdf
 
 
