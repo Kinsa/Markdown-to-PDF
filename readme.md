@@ -45,8 +45,8 @@ The service runs in debug mode by default and will be available at http://127.0.
 
 - [x] Prototype in Code: Python script which takes a markdown file as an argument and returns a formatted PDF
 - [x] Styling with CSS: Modify the stying of the output. Building towards having a default stylesheet, the ability to specify a separate stylesheet as a script argument, and documentation for creating additional stylesheets.
-- [-] Backend Service: Abstract the functional prototype from the command line interface, adding a web server to allow posting a markdown file and optionally a stylesheet (ref. https://flask.palletsprojects.com/en/stable/patterns/fileuploads/)
-    - [-] Test services.py (ref. https://testdriven.io/blog/flask-pytest/)
+- [ ] **[IN PROGRESS]** Backend Service: Abstract the functional prototype from the command line interface, adding a web server to allow posting a markdown file and optionally a stylesheet (ref. https://flask.palletsprojects.com/en/stable/patterns/fileuploads/)
+    - [ ] **[IN PROGRESS]** Test services.py (ref. https://testdriven.io/blog/flask-pytest/)
     - [ ] Delete uploads after processing
     - [ ] Style the tempalate
     - [ ] Allow drag-and-drop uploading (ref. https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/File_drag_and_drop)
