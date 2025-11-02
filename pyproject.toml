@@ -24,3 +24,9 @@ dev = [
     "pytest-cov>=7.0.0",
     "ruff>=0.12.9",
 ]
+
+[tool.pytest.ini_options]
+markers = [
+    "unit: Unit tests that test individual functions in isolation",
+    "integration: Integration tests that test multiple components together",
+]
