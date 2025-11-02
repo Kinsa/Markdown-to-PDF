@@ -32,3 +32,6 @@ htmlcov/
 
 # Uploads directory (service.py)
 uploads/
+
+# Playwright downloads (test_e2e.py)
+downloads/

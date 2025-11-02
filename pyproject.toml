@@ -20,8 +20,10 @@ py-modules = ["main", "service"]
 
 [dependency-groups]
 dev = [
+    "playwright>=1.55.0",
     "pytest>=8.4.1",
     "pytest-cov>=7.0.0",
+    "pytest-playwright>=0.7.1",
     "ruff>=0.12.9",
 ]
 
@@ -29,4 +31,5 @@ dev = [
 markers = [
     "unit: Unit tests that test individual functions in isolation",
     "integration: Integration tests that test multiple components together",
+    "e2e: End-to-end tests using Playwright browser automation",
 ]

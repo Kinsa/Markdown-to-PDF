@@ -13,6 +13,9 @@ Convert a Markdown document to PDF in Python using xhtml2pdf and readme.
 4. Install the project in editable mode: `uv pip install -e .`
    - This allows tests to import `main` and `service` modules without path manipulation
    - Changes to code are immediately reflected without reinstallation
+5. Install Playwright browsers for end-to-end testing: `uv run playwright install chromium`
+   - Only needed if running Playwright tests
+   - Chromium is the fastest/smallest browser for testing
 
 ### Running the Script from the Command Line
 
@@ -90,16 +93,66 @@ uv run pytest
 
 ### Running Tests
 
+Run all tests (see note about needing a server to be running for end-to-end tests if doing this):
 ```shell
 # sh
-pytest test_main.py -v
+uv run pytest
 ```
 
-To run tests and create HTML code coverage reports of the main and service files run (In VSCode use the `ms-vscode.live-server` extension to open these reports in VSCode via the Show Preview option when right-clicking the file):
+Run specific test types:
+```shell
+# sh
+# Unit tests only
+uv run pytest -m unit
+
+# Integration tests only
+uv run pytest -m integration
+
+# Everything except end-to-end tests
+uv run pytest -m "not e2e"
+
+# Specific test file
+uv run pytest tests/test_main.py -v
+```
+
+Run non end-to-end tests with coverage reports:
+```shell
+# sh
+# Generate HTML coverage report
+uv run pytest -m "not e2e" --cov=main --cov=service --cov-report=html
+
+# Show coverage in terminal with missing lines
+uv run pytest -m "not e2e" --cov=main --cov=service --cov-report=term-missing
+```
+
+Note: In VSCode use the `ms-vscode.live-server` extension to open HTML coverage reports via the Show Preview option when right-clicking the `htmlcov/index.html` file.
+
+Run Playwright end-to-end tests (requires `playwright install chromium`):
+
+Important: You need to have the Flask server running first:
+
+Terminal 1: Start the server
 
 ```shell
-# sh 
-uv run pytest --cov=main --cov=service --cov-report=html
+# sh
+uv run python service.py
+```
+
+Terminal 2: Run the tests
+
+```shell
+# sh
+# Run all Playwright tests
+uv run pytest tests/test_e2e.py
+
+# Run all end-to-end tests
+uv run pytest -m e2e
+
+# Run in headed mode (see browser)
+uv run pytest tests/test_e2e.py --headed
+
+# Run with slow motion for debugging
+uv run pytest tests/test_e2e.py --headed --slowmo 1000
 ```
 
 ### Code Quality Tools

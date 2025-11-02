@@ -27,9 +27,14 @@ uv sync --frozen --all-groups
 
 # Install project in editable mode (required for tests to import modules)
 uv pip install -e .
+
+# Install Playwright browsers (only needed for end-to-end testing)
+uv run playwright install chromium
 ```
 
 **Important**: The `uv pip install -e .` step installs the project in editable mode, which allows tests to import `main` and `service` modules without sys.path manipulation. This is required for the test suite to work properly.
+
+**Playwright Setup**: The `playwright install chromium` command downloads the Chromium browser for end-to-end testing. This is only needed if you're running Playwright tests.
 
 ## Core Dependencies
 
@@ -37,7 +42,10 @@ uv pip install -e .
 - **markdown**: Markdown to HTML converter
 - **ruff**: Fast Python linter and code formatter
 - **pytest**: Testing framework
+- **pytest-cov**: Code coverage reporting for pytest
 - **Flask**: Web application framework
+- **playwright**: Browser automation for end-to-end testing
+- **pytest-playwright**: Pytest integration for Playwright
 
 ## Project Structure
 
@@ -103,12 +111,52 @@ Always run tests after making changes. Tests help ensure code quality and catch 
 source .venv/bin/activate
 pytest
 pytest -v
-pytest test_main.py
+pytest tests/test_main.py
 
 # Option 2: Using uv run (no activation needed)
 uv run pytest
 uv run pytest -v
-uv run pytest test_main.py
+uv run pytest tests/test_main.py
+```
+
+### Test Types and Markers
+
+Tests are organized using pytest markers:
+- `@pytest.mark.unit` - Unit tests that test individual functions in isolation
+- `@pytest.mark.integration` - Integration tests that test multiple components together
+
+Run specific test types:
+```sh
+# Run only unit tests
+uv run pytest -m unit
+
+# Run only integration tests
+uv run pytest -m integration
+```
+
+### Coverage Reporting
+
+Generate code coverage reports:
+```sh
+# HTML report (view in browser)
+uv run pytest --cov=main --cov=service --cov-report=html
+
+# Terminal report with missing lines
+uv run pytest --cov=main --cov=service --cov-report=term-missing
+```
+
+### Playwright End-to-End Tests
+
+Run browser-based end-to-end tests (requires `playwright install chromium`):
+```sh
+# Run Playwright tests headless
+uv run pytest tests/test_e2e.py
+
+# Run with visible browser
+uv run pytest tests/test_e2e.py --headed
+
+# Run with slow motion for debugging
+uv run pytest tests/test_e2e.py --headed --slowmo 1000
 ```
 
 When adding new functionality, either specify what tests to write or ask for test suggestions to ensure proper coverage.
