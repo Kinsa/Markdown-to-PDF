@@ -39,7 +39,7 @@ For more information on defining things such as page size and margins, see the [
 
 ```shell
 # sh
-uv run python fservice.py
+uv run python service.py
 ```
 
 The service runs in debug mode by default and will be available at http://127.0.0.1:5000
