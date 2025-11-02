@@ -1,3 +1,5 @@
+"""Unit and integration tests for service.py"""
+
 from io import BytesIO
 import pytest
 

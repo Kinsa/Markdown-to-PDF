@@ -1,3 +1,5 @@
+"""Unit and integration tests for main.py"""
+
 import pytest
 import sys
 import tempfile
