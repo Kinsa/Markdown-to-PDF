@@ -51,10 +51,11 @@ The service runs in debug mode by default and will be available at http://127.0.
 - [ ] **[IN PROGRESS]** Backend Service: Abstract the functional prototype from the command line interface, adding a web server to allow posting a markdown file and optionally a stylesheet (ref. https://flask.palletsprojects.com/en/stable/patterns/fileuploads/)
     - [x] Test services.py (ref. https://testdriven.io/blog/flask-pytest/)
     - [ ] Delete uploads after processing
-    - [ ] Style the tempalate
     - [ ] Allow drag-and-drop uploading (ref. https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/File_drag_and_drop)
     - [ ] Allow for choosing between stylesheets (currently `default.css` which is a sans-serif typeface and `minimal.css` which just sets up an A4 page size)
     - [ ] Containerize / make production ready
+    - [ ] Design the UI
+    - [ ] Style the template
 - [ ] Mac OS / iOS app: Abstract backend service to use pywebview (JavaScript calls Python directly without web server) / evaluate Tauri (continue to use web server), package into a windowed .app including the frontend build as app data 
 - [ ] Allow greater control over styling - one idea would be to choose options e.g. "A4" or "Letter" and "Landscape" or "Portrait" and maybe font, base font size, etc. and have the option to remember that for next time
 
