@@ -23,13 +23,13 @@ error_messages = get_flashed_messages(category_filter=['error']) %}
     {% endif %}
 
     {% if error_messages %}
-    <div role="alert" aria-live="assertive" class="flash-messages flash-error"></div>
-    <h2>Error:</h2>
-    <ul class="flash-messages flash-error">
-        {% for message in error_messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
+    <div role="alert" aria-live="assertive" class="flash-messages flash-error">
+        <h2>Error:</h2>
+        <ul class="flash-messages flash-error">
+            {% for message in error_messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
     </div>
     {% endif %}
 
