@@ -56,7 +56,7 @@ def upload_file():
             pdf_filename = os.path.basename(pdf_file)
             flash("Your file has been converted successfully!", "success")
 
-            # Legacy - inintially had automatic download here but for better UX moved to template and triggered download with JS
+            # Legacy - initially had automatic download here, but for better UX moved to template and triggered download with JS
             # return redirect(url_for("download_file", name=pdf_filename))
             
             # Pass the download URL to the template to trigger automatic download
